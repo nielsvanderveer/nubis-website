@@ -67,28 +67,31 @@ Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](htt
 
 ## Installation
 
-1. Create a new project:
-   ```sh
-   $ composer create-project roots/bedrock
-   ```
-2. Update environment variables in the `.env` file. Wrap values that may contain non-alphanumeric characters with quotes, or they may be incorrectly parsed.
+1. Download the repo and create a new project in your IDE
+2. Create a .env file in the root folder and update environment variables 
+    `DB_CONNECTION=mysql`
+    `DB_HOST=localhost`
+    `DB_PORT=3306`
+    `DB_NAME=nubis`
+    `DB_USER=YOUR_USERNAME`
+    `DB_PASSWORD=YOUR_PASSWORD`
 
-- Database variables
-  - `DB_NAME` - Database name
-  - `DB_USER` - Database user
-  - `DB_PASSWORD` - Database password
-  - `DB_HOST` - Database host
-  - Optionally, you can define `DATABASE_URL` for using a DSN instead of using the variables above (e.g. `mysql://user:password@127.0.0.1:3306/db_name`)
-- `WP_ENV` - Set to environment (`development`, `staging`, `production`)
-- `WP_HOME` - Full URL to WordPress home (https://example.com)
-- `WP_SITEURL` - Full URL to WordPress including subdirectory (https://example.com/wp)
-- `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`
-  - Generate with [wp-cli-dotenv-command](https://github.com/aaemnnosttv/wp-cli-dotenv-command)
-  - Generate with [our WordPress salts generator](https://roots.io/salts.html)
+    `WP_ENV=development`
+    `WP_HOME=http://localhost:8000`
+    `WP_SITEURL="${WP_HOME}/wp"`
+    `WP_DEBUG_LOG=/path/to/debug.log`
 
-3. Add theme(s) in `web/app/themes/` as you would for a normal WordPress site
-4. Set the document root on your webserver to Bedrock's `web` folder: `/path/to/site/web/`
-5. Access WordPress admin at `https://example.com/wp/wp-admin/`
+# Generate your keys here: https://roots.io/salts.html Use this link and copy the result (Env format) into your .env file and save the file
+
+3. Go to the nubis theme folder with `cd web/app/themes/nubis` and run `yarn`
+4. Then run `yarn start`
+5. Open a 2nd terminal, check if your in the root folder and run `composer install`
+6. Then run `php -S 0.0.0.0:8000 -t web`
+7. Go to `localhost:8000` and install WordPress there
+8. Now you're good to go!
+
+Everytime you want to start working: open 2 terminals and run `yarn start` and `php -S 0.0.0.0:8000 -t web`.
+
 
 ## Documentation
 
